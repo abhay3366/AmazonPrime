@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 const Header = () => {
+    
   const [homeDropdown, setHomeDropdown] = useState(false);
   const [storeDropdown, setStoreDropdown] = useState(false);
     const [categoryDropdown, setCategoryDropdown] = useState(false);
