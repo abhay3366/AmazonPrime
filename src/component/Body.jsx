@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import Browse from './Browse'
-import { createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Login from './Login'
 
 const Body = () => {
@@ -13,10 +13,11 @@ const Body = () => {
     ]);
   return (
     <div>
-        <Header/>
-        <Browse/>
+      <RouterProvider router={router} />
+      {/* <Header />
+      <Browse /> */}
     </div>
-  )
+  );
 }
 
 export default Body

@@ -1,11 +1,10 @@
 
+import Header from './Header'
 
 const Browse = () => {
   return (
-    <div>
-      <img src="/image/MLP.jpg" alt="" className="w-screen" />
-    </div>
-  );
+    <div><Header/></div>
+  )
 }
 
 export default Browse

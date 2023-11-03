@@ -28,7 +28,7 @@ const Header = () => {
           >
             Home
             {homeDropdown && (
-              <ul className="absolute bg-slate-900 ">
+              <ul className="absolute z-10 bg-slate-900 ">
                 <li className="p-3 hover:bg-slate-300 hover:text-black">All</li>
                 <li className="p-3 hover:bg-slate-300 hover:text-black">
                   Movies
@@ -46,7 +46,7 @@ const Header = () => {
           >
             Store
             {storeDropdown && (
-              <ul className="absolute bg-slate-900 ">
+              <ul className="absolute z-10 bg-slate-900 ">
                 <li className="p-3 hover:bg-slate-300 hover:text-black">All</li>
                 <li className="p-3 hover:bg-slate-300 hover:text-black">
                   Rent
