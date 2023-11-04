@@ -15,10 +15,12 @@
 
 import { Stack, Input, Text } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+
+import Browse from "./Browse";
 
 
 const Login = () => {
@@ -26,6 +28,8 @@ const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const formRef = useRef();
+  const navigate = useNavigate();
+
   // const emailRef=useRef();
   // toggling of login and signup
   const handleSignup = () => {
@@ -45,6 +49,7 @@ const Login = () => {
         // Signed up
         const user = userCredential.user;
         console.log(user);
+        navigate("/browse");
         // ...
       })
       .catch((error) => {
