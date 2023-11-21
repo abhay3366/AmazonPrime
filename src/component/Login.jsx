@@ -17,11 +17,13 @@ import { Stack, Input, Text } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
 
 import Browse from "./Browse";
-
 
 const Login = () => {
   const [login, setLogin] = useState(true);
@@ -40,13 +42,14 @@ const Login = () => {
     e.preventDefault();
     const password = passwordRef.current.value;
     const email = emailRef.current.value;
-    
+
     // console.log(emailRef.current.value,passwordRef.current.value);
     // console.log("d",formRef.current)
-    
+
+     // ! Signed up
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up
+       
         const user = userCredential.user;
         console.log(user);
         navigate("/browse");
@@ -57,6 +60,21 @@ const Login = () => {
         const errorMessage = error.message;
         console.log(errorMessage, errorCode);
         // ..
+      });
+
+      //! Signed in
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+       
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/browse");
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage, errorCode);
       });
 
     if (formRef.current) {
