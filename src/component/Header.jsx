@@ -1,6 +1,6 @@
 import { position } from '@chakra-ui/react';
 import { Input } from 'postcss';
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const Header = () => {
     
@@ -8,8 +8,13 @@ const Header = () => {
   const [storeDropdown, setStoreDropdown] = useState(false);
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [searchMovies,setsearchMovies] = useState(false);
+  
+  const searchref=useRef()
 
-
+// handle search for movies
+  const handleSearchChange=()=>{
+    
+  }
   // search Input FUNCTION
   const searchInputfun=()=>{
     setsearchMovies(!searchMovies);
@@ -108,7 +113,7 @@ const Header = () => {
       <div className="flex gap-10">
         {/* <Input placeholder='medium size' size='md' /> */}
         
-        { searchMovies && (<input type='text' style={{position:"absolute",top:"15px",right:"450px"}} placeholder='Find your movies'/>)}
+        { searchMovies && (<form onChange={handleSearchChange}><input type='text' ref={searchref} style={{position:"absolute",top:"15px",right:"450px"}} placeholder='Find your movies'/></form>)}
         <img
           src="https://cdn-icons-png.flaticon.com/128/10828/10828778.png"
           alt="search img"
