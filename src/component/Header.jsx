@@ -13,7 +13,8 @@ const Header = () => {
 
 // handle search for movies
   const handleSearchChange=()=>{
-    
+    const searchValue=searchref.current.value;
+    console.log("searchValue",searchValue);
   }
   // search Input FUNCTION
   const searchInputfun=()=>{
