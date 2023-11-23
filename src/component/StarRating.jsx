@@ -4,7 +4,7 @@ import { Box, Flex } from "@chakra-ui/react";
 const StarRating = (props) => {
 const {rating}=props;
   const filledStars = Math.floor(rating);
-  console.log("filledStars",filledStars);
+  // console.log("filledStars",filledStars);
 const hasHalfStar = rating % 1 !== 0;
 
   const renderStars = () => {

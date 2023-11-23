@@ -10,11 +10,11 @@ const MoviesBox = (props) => {
     <Grid  templateColumns='repeat(5, 1fr)' gap={5}>
       {moviesData.map((el)=>(
       <div  key={el.id} >
-        <Image src={el.image} alt="Dan Abramov" />
-        <Text fontSize='md'>{el.title}</Text>
-        <Text fontSize='sm'>SUMMARY</Text>
-        <Text fontSize='sm'>{el.description}</Text>
-        <StarRating rating={el.rating}/>
+        <Image src={el.Poster} alt="Dan Abramov" />
+        <Text fontSize='md'>{el.Title}</Text>
+        <Text fontSize='sm'>Year</Text>
+        <Text fontSize='sm'>{el.Year}</Text>
+        {/* <StarRating rating={el.rating}/> */}
         
       </div>
       

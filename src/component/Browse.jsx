@@ -4,20 +4,16 @@ import MoviesBox from "./MoviesBox";
 
 const Browse = () => {
   const [getMoviesResult,setMoviesResult]=useState([]);
+  // const [IfSearch,setIfSearch]=useState(false);
   const getDatafunc = async () => {
-    const url = "https://imdb-top-100-movies.p.rapidapi.com/?s=The Godfather&type=movie";
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "681082fc4amsh20830f79262bbd3p1eceabjsnd096c06ae04b",
-        "X-RapidAPI-Host": "imdb-top-100-movies.p.rapidapi.com",
-      },
-    };
+    const url ="https://www.omdbapi.com/?s=Batman&apikey=51876c6a&page=1";
+
 
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(url);
       const result = await response.json();
-      setMoviesResult(result)
+      console.log(result);
+      setMoviesResult(result.Search)
       console.log(getMoviesResult);
     } catch (error) {
       console.error(error);
@@ -30,7 +26,9 @@ const Browse = () => {
   return (
     <div>
       <Header />
+      
       <MoviesBox moviesData={getMoviesResult}/>
+      
     </div>
   );
 };

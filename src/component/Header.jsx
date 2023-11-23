@@ -19,7 +19,7 @@ const Header = () => {
   // handle search for movies
   const handleSearchChange = () => {
     const searchInput =searchRef.current.value;
-    console.log(searchInput);
+    // console.log(searchInput);
     dispatch(searchMovies(searchInput))
   };
 
@@ -41,7 +41,7 @@ const Header = () => {
   };
   return (
     <div className="flex justify-around bg-slate-900">
-     
+     <SearchMovies/>
       <div className="font-bold text-2xl text-white"> prime Video</div>
       <div className="flex-grow-0  w-1/3">
         <ul className="flex justify-evenly py-2">
