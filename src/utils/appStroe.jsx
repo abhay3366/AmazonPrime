@@ -1,6 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit";
+import inputReducer from "./searchSlice";
 
-const appStore=configureStore({
-    reducer: {}
+
+const store=configureStore({
+    reducer: {
+        input:inputReducer
+    }
 })
-export default appStore;
+export default store;

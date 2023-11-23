@@ -1,39 +1,47 @@
-import { position } from '@chakra-ui/react';
-import { Input } from 'postcss';
-import { useRef, useState } from 'react'
+
+import { useRef, useState } from "react";
+import SearchMovies from "./SearchMovies";
+import { useDispatch, useSelector } from "react-redux";
+import { searchMovies } from "../utils/searchSlice";
 
 const Header = () => {
-    
   const [homeDropdown, setHomeDropdown] = useState(false);
   const [storeDropdown, setStoreDropdown] = useState(false);
   const [categoryDropdown, setCategoryDropdown] = useState(false);
-  const [searchMovies,setsearchMovies] = useState(false);
-  
-  const searchref=useRef()
+  const [showSearch, setShowSearch] = useState(false);
 
-// handle search for movies
-  const handleSearchChange=()=>{
-    const searchValue=searchref.current.value;
-    console.log("searchValue",searchValue);
-  }
+
+  const searchRef = useRef();
+  const dispatch=useDispatch()
+  const inputData=useSelector((state)=>state.input.inputData)
+  console.log(inputData)
+
+  // handle search for movies
+  const handleSearchChange = () => {
+    const searchInput =searchRef.current.value;
+    console.log(searchInput);
+    dispatch(searchMovies(searchInput))
+  };
+
   // search Input FUNCTION
-  const searchInputfun=()=>{
-    setsearchMovies(!searchMovies);
-    console.log("searchMovies",searchMovies);
-  }
+  const searchInputfun = () => {
+    setShowSearch(!showSearch);
+    
+  };
 
-    //code for dropdown
+  //code for dropdown
   const toggleHomeDropdown = () => {
     setHomeDropdown(!homeDropdown);
   };
-    const toggleStoreDropdown = () => {
-      setStoreDropdown(!storeDropdown);
-    };
-        const toggleCategoryDropdown = () => {
-         setCategoryDropdown(!categoryDropdown);
-        };
+  const toggleStoreDropdown = () => {
+    setStoreDropdown(!storeDropdown);
+  };
+  const toggleCategoryDropdown = () => {
+    setCategoryDropdown(!categoryDropdown);
+  };
   return (
     <div className="flex justify-around bg-slate-900">
+     
       <div className="font-bold text-2xl text-white"> prime Video</div>
       <div className="flex-grow-0  w-1/3">
         <ul className="flex justify-evenly py-2">
@@ -113,14 +121,23 @@ const Header = () => {
       </div>
       <div className="flex gap-10">
         {/* <Input placeholder='medium size' size='md' /> */}
-        
-        { searchMovies && (<form onChange={handleSearchChange}><input type='text' ref={searchref} style={{position:"absolute",top:"15px",right:"450px"}} placeholder='Find your movies'/></form>)}
+
+        {searchMovies && (
+          <form onChange={handleSearchChange}>
+            <input
+              type="text"
+              ref={searchRef}
+              style={{ position: "absolute", top: "15px", right: "450px" }}
+              placeholder="Find your movies"
+            />
+          </form>
+        )}
         <img
           src="https://cdn-icons-png.flaticon.com/128/10828/10828778.png"
           alt="search img"
           className="w-10 h-10 my-2"
           onClick={searchInputfun}
-          style={{cursor: 'pointer'}}
+          style={{ cursor: "pointer" }}
         />
         <li className="list-none py-2 font-medium text-xl text-white">
           Try For Free
@@ -133,6 +150,6 @@ const Header = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Header
+export default Header;

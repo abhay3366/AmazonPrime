@@ -5,7 +5,7 @@ import MoviesBox from "./MoviesBox";
 const Browse = () => {
   const [getMoviesResult,setMoviesResult]=useState([]);
   const getDatafunc = async () => {
-    const url = "https://imdb-top-100-movies.p.rapidapi.com/";
+    const url = "https://imdb-top-100-movies.p.rapidapi.com/?s=The Godfather&type=movie";
     const options = {
       method: "GET",
       headers: {
