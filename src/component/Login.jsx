@@ -24,13 +24,17 @@ import {
 import { auth } from "../utils/firebase";
 
 import Browse from "./Browse";
+import { useDispatch } from "react-redux";
+import { userName } from "../utils/userSlice";
 
 const Login = () => {
   const [login, setLogin] = useState(true);
   const emailRef = useRef();
   const passwordRef = useRef();
   const formRef = useRef();
+  const nameRef=useRef();
   const navigate = useNavigate();
+  const dispatch=useDispatch();
 
   // const emailRef=useRef();
   // toggling of login and signup
@@ -40,8 +44,12 @@ const Login = () => {
   //handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    const name=nameRef.current.value;
     const password = passwordRef.current.value;
     const email = emailRef.current.value;
+    console.log(name)
+    dispatch(userName({name,email}));
+    
 
     // console.log(emailRef.current.value,passwordRef.current.value);
     // console.log("d",formRef.current)
@@ -51,7 +59,7 @@ const Login = () => {
       .then((userCredential) => {
        
         const user = userCredential.user;
-        console.log(user);
+        console.log("user",user);
         navigate("/browse");
         // ...
       })
@@ -101,8 +109,9 @@ const Login = () => {
                 </label>
                 <input
                   id="name"
+                  ref={nameRef}
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="User Name"
                   className="w-full border rounded-md py-2 px-3 text-gray-700 focus:outline-none focus:border-blue-500"
                 />
               </div>

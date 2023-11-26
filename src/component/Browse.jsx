@@ -13,26 +13,26 @@ const Browse = () => {
   const [filterData,getFilterData] = useState([]);
 
     const inputData = useSelector((state) => state.input.inputData);
-    console.log("inputDataaaaaaa", inputData);
+    // console.log("inputDataaaaaaa", inputData);
 
   const getDatafunc = async (page) => {
     // console.log("page", page);
     setCurrentPage(page);
-    console.log("currentPage", currentPage);
+    // console.log("currentPage", currentPage);
     const url = `https://www.omdbapi.com/?s=Batman&apikey=51876c6a&page=${currentPage}`;
 
     try {
       const response = await fetch(url);
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
       setMoviesResult(result.Search);
       setPageCount(Math.floor(result.totalResults/10));
-      console.log(getMoviesResult);
+      // console.log(getMoviesResult);
       getFilterData(result.Search);
     } catch (error) {
       console.error(error);
     }
-    console.log(pageCount);
+    // console.log(pageCount);
   };
 
     const getFilterDataFunc=()=>{

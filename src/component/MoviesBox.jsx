@@ -2,13 +2,13 @@ import { Box, Flex, Grid, Image,Text } from "@chakra-ui/react";
 import StarRating from "./StarRating";
 
 const MoviesBox = (props) => {
-  console.log(props);
+  // console.log(props);
   const { moviesData } = props;
-  console.log(moviesData);
+  // console.log(moviesData);
   // const moviesData=props.
   return (
     <Grid  templateColumns='repeat(5, 1fr)' gap={5}>
-      {moviesData.map((el)=>(
+      {moviesData.map((el,key)=>(
       <div  key={el.id} >
         <Image src={el.Poster} alt="Dan Abramov" />
         <Text fontSize='md'>{el.Title}</Text>
